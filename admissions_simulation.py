@@ -3,18 +3,15 @@
 
 # In[1]:
 
-import scipy.stats as stats
-from scipy.special import comb as choose
-import numpy as np
-import pandas as pd
-#import matplotlib.pyplot as plt
-import random
 from IPython.display import display, Math, Latex
 import math
-import plotly
-import plotly.plotly as py
-import plotly.graph_objs as go
-plotly.offline.init_notebook_mode()
+import matplotlib.pyplot as plt
+get_ipython().magic(u'matplotlib inline')
+import numpy as np
+import pandas as pd
+import random
+import scipy.stats as stats
+from scipy.special import comb as choose
 
 
 # In[2]:
@@ -113,32 +110,18 @@ paper_simulation_results
 
 # In[6]:
 
-acceptance_rate_graph = go.Scatter(
-    x = paper_simulation_results['applications_per_student'],
-    y = paper_simulation_results['avg_acceptance_rate']
-)
-layout = go.Layout(
-    title='Acceptance Rate by Number of Applications Per Student',
-    xaxis=dict(title='Number of applications per student'),
-    yaxis=dict(title='Average acceptance rates')
-)
-data = [acceptance_rate_graph]
-figure = go.Figure(data=data, layout=layout)
-plotly.offline.iplot(figure, filename='basic-line')
+plt.figure(figsize=(10,7))
+plt.plot(paper_simulation_results['applications_per_student'], paper_simulation_results['avg_acceptance_rate'], marker = 'o')
+plt.suptitle('Average Acceptance Rate by Number of Applications per Student', fontsize=14)
+plt.xlabel('Number of Applications Per Student',fontsize=14)
+plt.ylabel('Average Acceptance Rate',fontsize=14)
 
 
 # In[7]:
 
-yield_rate_graph = go.Scatter(
-    x = paper_simulation_results['applications_per_student'],
-    y = paper_simulation_results['avg_yield_rate']
-)
-layout = go.Layout(
-    title='Yield Rate by Number of Applications Per Student',
-    xaxis=dict(title='Number of applications per student'),
-    yaxis=dict(title='Average yield rates')
-)
-data = [yield_rate_graph]
-figure = go.Figure(data=data, layout=layout)
-plotly.offline.iplot(figure, filename='basic-line')
+plt.figure(figsize=(10,7))
+plt.plot(paper_simulation_results['applications_per_student'], paper_simulation_results['avg_yield_rate'], marker='o')
+plt.suptitle('Average Acceptance Rate by Number of Applications per Student', fontsize=14)
+plt.xlabel('Number of Applications Per Student',fontsize=14)
+plt.ylabel('Average Yield Rate',fontsize=14)
 
